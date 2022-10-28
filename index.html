@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<style>
+    #app{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    input{
+        inset: none;
+        border: 1px solid green;
+        padding: 10px;
+        width: 200px;
+        border-radius: 50px;
+    }
+    input:hover{
+        background: #000;
+        color: white;
+    }
+    input::content{
+        background: #000;
+        color: white;
+    }
+    button{
+        padding: 10px;
+        align-self: center;
+        background: #000;
+        color: white;
+        border-radius: 50px;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <label for="fName">First Name: <input type="text" id="fName" v-model="order.firstName" placeholder="What is your First Name Nigga!!!">
+            </label>
+            <p>Your first Name: {{order.firstName}}</p>
+        </div>
+        <button @click="save">Save Details</button>
+
+        <p>Your details are : {{details}}</p>
+        
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    order:{
+                        firstName:''
+                    },
+                    details: []
+                }
+            },
+            methods: {
+                save: function (){
+                    this.details.push(this.order.firstName)
+                    console.log(this.details)
+                }
+            },
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>
